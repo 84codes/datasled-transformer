@@ -1,21 +1,6 @@
-# Datasled transform module
+# datasled-transformer
 
+This repository is no longer in use and archived on Thu Mar 28 11:51:15 AM UTC 2024, last commit was 270f14e.
 
-## Example
+Last working version is available in the [archive](https://github.com/84codes/datasled-transformer/tree/archive) branch.
 
-For each message, parse the body as JSON and append the field `name` to the key of the message.
-
-``` typescript
-
-import {
-  each, to_byte_array, to_json, to_string
-} from "https://raw.githubusercontent.com/84codes/datasled-transformer/main/mod.ts";
-
-await each(msg => {
-  let body = to_json(msg.body);
-  msg.key = to_byte_array(to_string(msg.key) + "." + body.name);
-  msg.headers.set("transformed", "1")
-  return msg;
-});
-
-```
